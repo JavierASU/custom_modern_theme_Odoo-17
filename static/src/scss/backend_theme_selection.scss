@@ -1,0 +1,124 @@
+// ==========================================================================
+// Enhanced Selection & Dropdown Styles for Modern Backend Theme
+// ==========================================================================
+// Improved select fields, dropdown arrows, and selection states.
+// ==========================================================================
+
+// --------------------------------------------------------------------------
+// Native select fields
+// --------------------------------------------------------------------------
+.o_web_client {
+    select.o_input,
+    .o_field_widget select {
+        appearance: none;
+        -webkit-appearance: none;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2364748b' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-position: right 10px center;
+        padding-right: 32px !important;
+        cursor: pointer;
+        transition: all 0.2s ease;
+
+        &:hover {
+            border-color: #cbd5e1;
+        }
+
+        &:focus {
+            border-color: #6366f1;
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.12);
+        }
+    }
+}
+
+// --------------------------------------------------------------------------
+// Selection widget (radio-style buttons)
+// --------------------------------------------------------------------------
+.o_web_client .o_field_selection {
+    .o_input {
+        font-family: 'Inter', system-ui, sans-serif;
+        font-size: 0.875rem;
+        font-weight: 450;
+    }
+}
+
+// --------------------------------------------------------------------------
+// Statusbar selection buttons
+// --------------------------------------------------------------------------
+.o_statusbar_status {
+    gap: 2px;
+
+    .o_arrow_button {
+        font-family: 'Inter', system-ui, sans-serif;
+        font-weight: 500;
+        font-size: 0.8125rem;
+        transition: all 0.15s ease;
+        letter-spacing: -0.01em;
+
+        &:not(.disabled):hover {
+            filter: brightness(1.05);
+        }
+
+        &.btn-primary,
+        &.o_arrow_button_current {
+            background: #6366f1;
+            font-weight: 600;
+        }
+    }
+}
+
+// --------------------------------------------------------------------------
+// Radio buttons as button group
+// --------------------------------------------------------------------------
+.o_web_client .o_radio_input {
+    .o_radio_item {
+        .form-check-input:checked + .form-check-label {
+            color: #6366f1;
+            font-weight: 600;
+        }
+
+        .form-check-label {
+            font-family: 'Inter', system-ui, sans-serif;
+            font-size: 0.875rem;
+            cursor: pointer;
+            transition: color 0.15s ease;
+
+            &:hover {
+                color: #4f46e5;
+            }
+        }
+    }
+}
+
+// --------------------------------------------------------------------------
+// Dark mode
+// --------------------------------------------------------------------------
+@media (prefers-color-scheme: dark) {
+    .o_web_client {
+        select.o_input,
+        .o_field_widget select {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2394a3b8' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+
+            &:hover {
+                border-color: #475569;
+            }
+        }
+    }
+
+    .o_statusbar_status .o_arrow_button {
+        &.btn-secondary {
+            background: #334155;
+            color: #cbd5e1;
+            border-color: #475569;
+        }
+    }
+
+    .o_web_client .o_radio_input .o_radio_item {
+        .form-check-input:checked + .form-check-label {
+            color: #818cf8;
+        }
+
+        .form-check-label:hover {
+            color: #a5b4fc;
+        }
+    }
+}
