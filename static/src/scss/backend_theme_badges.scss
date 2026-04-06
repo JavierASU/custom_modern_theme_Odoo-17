@@ -1,0 +1,169 @@
+// ==========================================================================
+// Enhanced Badge & Status Styles for Modern Backend Theme
+// ==========================================================================
+// Refined badge, pill, and status indicator styling.
+// ==========================================================================
+
+// --------------------------------------------------------------------------
+// Semantic status badges with icons
+// --------------------------------------------------------------------------
+.o_web_client {
+    // Success badge
+    .badge.text-bg-success {
+        background: linear-gradient(135deg, #dcfce7, #bbf7d0) !important;
+        color: #15803d !important;
+        border: 1px solid #86efac;
+        font-weight: 600;
+    }
+
+    // Danger badge
+    .badge.text-bg-danger {
+        background: linear-gradient(135deg, #fee2e2, #fecaca) !important;
+        color: #b91c1c !important;
+        border: 1px solid #fca5a5;
+        font-weight: 600;
+    }
+
+    // Warning badge
+    .badge.text-bg-warning {
+        background: linear-gradient(135deg, #fef3c7, #fde68a) !important;
+        color: #92400e !important;
+        border: 1px solid #fcd34d;
+        font-weight: 600;
+    }
+
+    // Info badge
+    .badge.text-bg-info {
+        background: linear-gradient(135deg, #ede9fe, #ddd6fe) !important;
+        color: #5b21b6 !important;
+        border: 1px solid #c4b5fd;
+        font-weight: 600;
+    }
+
+    // Primary badge
+    .badge.text-bg-primary {
+        background: linear-gradient(135deg, #6366f1, #4f46e5) !important;
+        color: #ffffff !important;
+        border: none;
+        font-weight: 600;
+        box-shadow: 0 1px 3px rgba(99, 102, 241, 0.3);
+    }
+
+    // Secondary badge
+    .badge.text-bg-secondary {
+        background: linear-gradient(135deg, #f1f5f9, #e2e8f0) !important;
+        color: #475569 !important;
+        border: 1px solid #cbd5e1;
+        font-weight: 600;
+    }
+}
+
+// --------------------------------------------------------------------------
+// Kanban status dots
+// --------------------------------------------------------------------------
+.o_field_status .o_status {
+    width: 12px;
+    height: 12px;
+    border: 2px solid transparent;
+    transition: all 0.2s ease;
+    box-shadow: 0 0 0 0 transparent;
+
+    &.o_status_green {
+        background: #10b981;
+        border-color: #d1fae5;
+        box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.2);
+    }
+
+    &.o_status_red {
+        background: #ef4444;
+        border-color: #fee2e2;
+        box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.2);
+    }
+
+    &:hover {
+        transform: scale(1.3);
+    }
+}
+
+// --------------------------------------------------------------------------
+// Pill-shaped tags in many2many fields
+// --------------------------------------------------------------------------
+.o_web_client .o_field_many2many_tags .badge {
+    border-radius: 20px;
+    padding: 5px 14px;
+    font-weight: 500;
+    font-size: 0.75rem;
+    letter-spacing: 0.01em;
+    border: none;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
+}
+
+// --------------------------------------------------------------------------
+// Activity badges (due dates)
+// --------------------------------------------------------------------------
+.o_web_client {
+    .o_activity_color_today {
+        color: #d97706 !important;
+        font-weight: 600;
+    }
+
+    .o_activity_color_overdue {
+        color: #dc2626 !important;
+        font-weight: 700;
+    }
+
+    .o_activity_color_planned {
+        color: #16a34a !important;
+        font-weight: 500;
+    }
+}
+
+// --------------------------------------------------------------------------
+// Dark mode badges
+// --------------------------------------------------------------------------
+@media (prefers-color-scheme: dark) {
+    .o_web_client {
+        .badge.text-bg-success {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.15), rgba(16, 185, 129, 0.1)) !important;
+            color: #6ee7b7 !important;
+            border-color: rgba(16, 185, 129, 0.3);
+        }
+
+        .badge.text-bg-danger {
+            background: linear-gradient(135deg, rgba(239, 68, 68, 0.15), rgba(239, 68, 68, 0.1)) !important;
+            color: #fca5a5 !important;
+            border-color: rgba(239, 68, 68, 0.3);
+        }
+
+        .badge.text-bg-warning {
+            background: linear-gradient(135deg, rgba(245, 158, 11, 0.15), rgba(245, 158, 11, 0.1)) !important;
+            color: #fcd34d !important;
+            border-color: rgba(245, 158, 11, 0.3);
+        }
+
+        .badge.text-bg-info {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.15), rgba(99, 102, 241, 0.1)) !important;
+            color: #a5b4fc !important;
+            border-color: rgba(99, 102, 241, 0.3);
+        }
+
+        .badge.text-bg-primary {
+            box-shadow: 0 1px 3px rgba(99, 102, 241, 0.2);
+        }
+
+        .badge.text-bg-secondary {
+            background: linear-gradient(135deg, #334155, #1e293b) !important;
+            color: #94a3b8 !important;
+            border-color: #475569;
+        }
+
+        .o_field_status .o_status {
+            &.o_status_green {
+                box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.15);
+            }
+            &.o_status_red {
+                box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.15);
+            }
+        }
+    }
+}
