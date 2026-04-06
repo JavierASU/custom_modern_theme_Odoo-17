@@ -36,6 +36,7 @@ Only changes CSS - zero functional changes. Uninstall to revert.
             '/custom_modern_theme/static/src/scss/backend_theme_responsive.scss',
             '/custom_modern_theme/static/src/scss/backend_theme_animations.scss',
             '/custom_modern_theme/static/src/scss/backend_theme_hover.scss',
+            '/custom_modern_theme/static/src/scss/backend_theme_skeleton.scss',
         ],
     },
 
