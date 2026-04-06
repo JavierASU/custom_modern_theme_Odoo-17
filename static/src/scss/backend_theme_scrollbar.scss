@@ -94,7 +94,7 @@
 // --------------------------------------------------------------------------
 // Dark mode scrollbars
 // --------------------------------------------------------------------------
-@media (prefers-color-scheme: dark) {
+@media (prefers-color-scheme: __disabled__) {
     .o_action_manager,
     .o_form_view .o_form_sheet,
     .o_list_view {

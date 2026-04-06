@@ -94,7 +94,7 @@
 // --------------------------------------------------------------------------
 // Dark mode
 // --------------------------------------------------------------------------
-@media (prefers-color-scheme: dark) {
+@media (prefers-color-scheme: __disabled__) {
     .o_web_client .o_view_nocontent .o_nocontent_help {
         p.o_view_nocontent_smiling_face::before {
             color: #475569;

@@ -94,7 +94,7 @@
 // --------------------------------------------------------------------------
 // Dark mode
 // --------------------------------------------------------------------------
-@media (prefers-color-scheme: dark) {
+@media (prefers-color-scheme: __disabled__) {
     .o_web_client .tooltip .tooltip-inner {
         background: #334155;
         color: #f1f5f9;
