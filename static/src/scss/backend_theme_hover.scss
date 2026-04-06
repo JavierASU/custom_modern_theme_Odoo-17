@@ -1,0 +1,162 @@
+// ==========================================================================
+// Enhanced Hover Effects for Modern Backend Theme
+// ==========================================================================
+// Micro-interactions that make the UI feel alive and responsive.
+// ==========================================================================
+
+// --------------------------------------------------------------------------
+// Navbar menu items — subtle glow on hover
+// --------------------------------------------------------------------------
+.o_main_navbar .o_menu_sections {
+    .o_nav_entry, .dropdown-toggle {
+        position: relative;
+
+        &::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: #6366f1;
+            transition: width 0.2s ease, left 0.2s ease;
+            border-radius: 1px;
+        }
+
+        &:hover::after {
+            width: 100%;
+            left: 0;
+        }
+    }
+}
+
+// --------------------------------------------------------------------------
+// App icons — breathing glow effect
+// --------------------------------------------------------------------------
+.o_home_menu .o_home_menu_scrollable .o_app {
+    .o_app_icon {
+        transition: transform 0.25s ease, box-shadow 0.25s ease, filter 0.25s ease;
+    }
+
+    &:hover .o_app_icon {
+        transform: scale(1.08);
+        box-shadow: 0 8px 32px rgba(99, 102, 241, 0.25);
+        filter: brightness(1.05);
+    }
+
+    &:active .o_app_icon {
+        transform: scale(1.02);
+    }
+}
+
+// --------------------------------------------------------------------------
+// Sidebar items — left accent on hover
+// --------------------------------------------------------------------------
+.o_search_panel {
+    .o_search_panel_category_value,
+    .o_search_panel_filter_value {
+        position: relative;
+        transition: all 0.2s ease, padding-left 0.2s ease;
+
+        &::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 3px;
+            height: 0;
+            background: #6366f1;
+            border-radius: 0 2px 2px 0;
+            transition: height 0.2s ease;
+        }
+
+        &:hover::before,
+        &.active::before,
+        &.selected::before {
+            height: 60%;
+        }
+
+        &:hover {
+            padding-left: 20px;
+        }
+    }
+}
+
+// --------------------------------------------------------------------------
+// Table rows — smooth highlight with left accent
+// --------------------------------------------------------------------------
+.o_list_view tbody tr {
+    position: relative;
+
+    &::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 3px;
+        background: #6366f1;
+        transform: scaleY(0);
+        transition: transform 0.15s ease;
+        border-radius: 0 2px 2px 0;
+    }
+
+    &:hover::before {
+        transform: scaleY(1);
+    }
+}
+
+// --------------------------------------------------------------------------
+// Badge hover — subtle pop
+// --------------------------------------------------------------------------
+.o_web_client .badge {
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+
+    &:hover {
+        transform: scale(1.05);
+    }
+}
+
+// --------------------------------------------------------------------------
+// Tag hover — color intensify
+// --------------------------------------------------------------------------
+.o_web_client .o_field_many2many_tags .badge {
+    transition: transform 0.15s ease, filter 0.15s ease;
+
+    &:hover {
+        transform: scale(1.05);
+        filter: brightness(0.95) saturate(1.1);
+    }
+}
+
+// --------------------------------------------------------------------------
+// Attachment cards — lift and glow
+// --------------------------------------------------------------------------
+.o_web_client .o_attachment .o_attachment_wrap {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+    &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+    }
+}
+
+// --------------------------------------------------------------------------
+// Respect user preferences
+// --------------------------------------------------------------------------
+@media (prefers-reduced-motion: reduce) {
+    .o_main_navbar .o_menu_sections .o_nav_entry::after,
+    .o_main_navbar .o_menu_sections .dropdown-toggle::after,
+    .o_search_panel .o_search_panel_category_value::before,
+    .o_search_panel .o_search_panel_filter_value::before,
+    .o_list_view tbody tr::before {
+        transition: none;
+        animation: none;
+    }
+
+    .o_home_menu .o_home_menu_scrollable .o_app:hover .o_app_icon {
+        transform: none;
+        filter: none;
+    }
+}
