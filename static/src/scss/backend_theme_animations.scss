@@ -1,7 +1,7 @@
 // ==========================================================================
 // Enhanced Animations for Modern Backend Theme
 // ==========================================================================
-// Smooth skeleton loaders and view transition animations.
+// Smooth view transition animations (safe, non-conflicting).
 // ==========================================================================
 
 // Skeleton loading shimmer
@@ -22,27 +22,9 @@
     to { opacity: 1; transform: scale(1); }
 }
 
-// Slide in from right (for chatter/sidebars)
-@keyframes cmtSlideInRight {
-    from { opacity: 0; transform: translateX(20px); }
-    to { opacity: 1; transform: translateX(0); }
-}
-
-// View transitions
-.o_form_view,
-.o_list_view,
-.o_kanban_view {
-    animation: cmtFadeIn 0.25s ease-out;
-}
-
 // Modal animation
 .o_web_client .modal.show .modal-content {
     animation: cmtScaleIn 0.2s ease-out;
-}
-
-// Chatter slide in
-.o_form_view .o_FormRenderer_chatterContainer {
-    animation: cmtSlideInRight 0.3s ease-out;
 }
 
 // Notification entrance
@@ -50,55 +32,10 @@
     animation: cmtFadeIn 0.25s ease-out;
 }
 
-// Kanban card stagger effect
-.o_kanban_view .o_kanban_record {
-    animation: cmtFadeIn 0.3s ease-out both;
-}
-
-// Button loading state
-.o_web_client .btn.o_loading {
-    position: relative;
-    pointer-events: none;
-
-    &::after {
-        content: '';
-        position: absolute;
-        width: 16px;
-        height: 16px;
-        top: 50%;
-        left: 50%;
-        margin: -8px 0 0 -8px;
-        border: 2px solid transparent;
-        border-top-color: currentColor;
-        border-radius: 50%;
-        animation: cmtSpin 0.6s linear infinite;
-    }
-}
-
-@keyframes cmtSpin {
-    to { transform: rotate(360deg); }
-}
-
-// Smooth height transitions for collapsible sections
-.o_web_client {
-    .collapse {
-        transition: height 0.25s ease;
-    }
-
-    .collapsing {
-        transition: height 0.25s ease;
-    }
-}
-
 // Respect reduced motion
 @media (prefers-reduced-motion: reduce) {
-    .o_form_view,
-    .o_list_view,
-    .o_kanban_view,
     .o_web_client .modal.show .modal-content,
-    .o_form_view .o_FormRenderer_chatterContainer,
-    .o_notification_manager .o_notification,
-    .o_kanban_view .o_kanban_record {
+    .o_notification_manager .o_notification {
         animation: none;
     }
 }
