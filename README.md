@@ -2,6 +2,7 @@
 
 # 🎨 Modern Backend Theme for Odoo 17 CE
 
+[![CI](https://github.com/JavierASU/custom_modern_theme_Odoo-17/actions/workflows/lint.yml/badge.svg)](https://github.com/JavierASU/custom_modern_theme_Odoo-17/actions/workflows/lint.yml)
 [![Odoo Version](https://img.shields.io/badge/Odoo-17.0-714B67?style=for-the-badge&logo=odoo&logoColor=white)](https://www.odoo.com)
 [![License: LGPL-3](https://img.shields.io/badge/License-LGPL--3-blue?style=for-the-badge)](https://www.gnu.org/licenses/lgpl-3.0)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen?style=for-the-badge)](https://github.com/JavierASU/custom_modern_theme_Odoo-17/pulls)
@@ -11,7 +12,7 @@
 [![Made with Love](https://img.shields.io/badge/Made%20with-❤️-red?style=for-the-badge)](https://github.com/JavierASU)
 
 **A sleek, modern UI redesign for Odoo 17 Community Edition backend.**
-*Pure CSS — zero functional changes — fully reversible.*
+*Pure CSS — zero functional changes — fully reversible — dark mode included.*
 
 [📦 Install](#-installation) · [📸 Screenshots](#-screenshots) · [✨ Features](#-features) · [🤝 Contributing](#-contributing)
 
@@ -61,6 +62,16 @@ This module transforms the entire Odoo 17 backend appearance while keeping **100
 - **💫 Subtle Animations** — Smooth transitions and hover effects (200-300ms)
 - **📱 Non-invasive** — Only overrides CSS, never touches Python logic or JS behavior
 
+### New in v17.0.1.1.0
+
+| Feature | Description |
+|---------|-------------|
+| 🌙 **Dark Mode** | Automatic dark theme via `prefers-color-scheme` — all 40+ areas covered |
+| 🔐 **Login Page** | Styled login with gradient background and themed inputs |
+| ♿ **Accessibility** | `focus-visible` indicators, `prefers-reduced-motion`, keyboard nav |
+| 🖨️ **Print Styles** | Clean print output — hides nav, optimizes forms and lists |
+| 🎛️ **SCSS Variables** | All colors in one place — change the entire theme in seconds |
+
 ---
 
 ## 📦 Installation
@@ -108,26 +119,38 @@ Simply go to `Apps` → Find "Modern Backend Theme" → Click **Uninstall**. Eve
 ```
 custom_modern_theme/
 ├── __init__.py
-├── __manifest__.py            # Module metadata (depends: web only)
-├── LICENSE                    # LGPL-3
+├── __manifest__.py              # Module metadata (depends: web only)
+├── LICENSE                      # LGPL-3
 ├── README.md
+├── CHANGELOG.md                 # Detailed version history
+├── CONTRIBUTING.md              # Contributor guidelines
+├── CODE_OF_CONDUCT.md           # Community standards
+├── SECURITY.md                  # Security policy
 ├── imagenes/
-│   ├── before_original.png    # Default Odoo 17 CE
-│   └── after_modern.png       # With Modern Backend Theme
+│   ├── before_original.png      # Default Odoo 17 CE
+│   └── after_modern.png         # With Modern Backend Theme
 ├── static/
 │   └── src/
 │       └── scss/
-│           └── backend_theme.scss   # Single SCSS file (all overrides)
+│           └── backend_theme.scss   # SCSS with variables + dark mode
+├── docs/
+│   └── index.html               # GitHub Pages documentation site
+├── .github/
+│   ├── FUNDING.yml              # Sponsor button
+│   ├── dependabot.yml           # Dependency updates
+│   ├── pull_request_template.md # PR checklist
+│   ├── ISSUE_TEMPLATE/          # Bug & feature templates
+│   └── workflows/               # CI, CodeQL, Stale, Pages
 ├── controllers/
 ├── models/
-├── security/
-└── views/
+└── security/
 ```
 
 ### Why a Single SCSS File?
 
 - **Zero compilation risk** — No cross-file SCSS variable dependencies
-- **Easy to customize** — All 40 sections clearly labeled and documented
+- **Easy to customize** — All 44 sections clearly labeled and documented
+- **SCSS Variables at the top** — Change colors, radii, and fonts in one place
 - **Safe** — Only uses `web.assets_backend` bundle (doesn't touch the frontend or primary variables)
 - **Debuggable** — One place to look, one place to fix
 
@@ -135,15 +158,16 @@ custom_modern_theme/
 
 ## 🎨 Customization
 
-Want to change the primary color? Edit `static/src/scss/backend_theme.scss` and replace all occurrences:
+Want to change the primary color? Edit the **SCSS variables** at the top of `static/src/scss/backend_theme.scss`:
 
 ```scss
-// Current: Indigo
-#6366f1  →  your-color     // Primary
-#4f46e5  →  your-darker    // Primary hover
-#4338ca  →  your-darkest   // Primary active
-#ede9fe  →  your-lightest  // Primary background
-#c7d2fe  →  your-light     // Primary border
+// Just change these variables — applies everywhere automatically
+$cmt-primary:         #6366f1;   // Primary color
+$cmt-primary-hover:   #4f46e5;   // Hover state
+$cmt-primary-active:  #4338ca;   // Active/pressed state
+$cmt-primary-light:   #ede9fe;   // Light background
+$cmt-primary-border:  #c7d2fe;   // Subtle border
+$cmt-primary-rgb:     99, 102, 241;  // For rgba() usage
 ```
 
 Popular alternatives:

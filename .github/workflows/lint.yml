@@ -1,0 +1,93 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  scss-lint:
+    name: SCSS Validation
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install sass
+        run: npm install -g sass
+
+      - name: Compile SCSS
+        run: sass static/src/scss/backend_theme.scss static/src/scss/backend_theme.css --no-source-map
+
+      - name: Verify CSS output
+        run: |
+          if [ -f static/src/scss/backend_theme.css ]; then
+            echo "SCSS compiled successfully"
+            wc -l static/src/scss/backend_theme.css
+          else
+            echo "SCSS compilation failed"
+            exit 1
+          fi
+
+      - name: Clean up compiled CSS
+        run: rm -f static/src/scss/backend_theme.css
+
+  python-lint:
+    name: Python Validation
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Install flake8
+        run: pip install flake8
+
+      - name: Run flake8
+        run: flake8 . --max-line-length=120 --exclude=__pycache__,.git
+
+  structure-check:
+    name: Module Structure
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Verify required files exist
+        run: |
+          echo "Checking required module files..."
+          for file in __manifest__.py __init__.py LICENSE README.md static/src/scss/backend_theme.scss; do
+            if [ ! -f "$file" ]; then
+              echo "MISSING: $file"
+              exit 1
+            fi
+            echo "OK: $file"
+          done
+          echo "All required files present"
+
+      - name: Validate manifest
+        run: python3 -c "
+          import ast
+          with open('__manifest__.py') as f:
+              content = f.read()
+          manifest = ast.literal_eval(content.split('# -*- coding: utf-8 -*-')[-1].strip())
+          assert 'name' in manifest, 'Missing name'
+          assert 'version' in manifest, 'Missing version'
+          assert 'license' in manifest, 'Missing license'
+          assert manifest['license'] == 'LGPL-3', f'Expected LGPL-3, got {manifest[\"license\"]}'
+          print(f'Module: {manifest[\"name\"]} v{manifest[\"version\"]} ({manifest[\"license\"]})')
+          print('Manifest validation passed')
+          "

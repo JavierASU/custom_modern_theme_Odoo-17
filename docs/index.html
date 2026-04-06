@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Backend Theme for Odoo 17 CE</title>
+    <meta name="description" content="A sleek, modern UI redesign for Odoo 17 Community Edition backend. Pure CSS, zero functional changes, fully reversible.">
+    <style>
+        :root {
+            --primary: #6366f1;
+            --primary-hover: #4f46e5;
+            --primary-light: #ede9fe;
+            --text: #0f172a;
+            --text-secondary: #475569;
+            --text-muted: #64748b;
+            --bg: #ffffff;
+            --bg-subtle: #f8fafc;
+            --border: #e2e8f0;
+            --navbar-bg: #1e293b;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --primary: #818cf8;
+                --primary-hover: #6366f1;
+                --primary-light: rgba(99, 102, 241, 0.15);
+                --text: #f1f5f9;
+                --text-secondary: #cbd5e1;
+                --text-muted: #94a3b8;
+                --bg: #0f172a;
+                --bg-subtle: #1e293b;
+                --border: #334155;
+                --navbar-bg: #020617;
+            }
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+            color: var(--text);
+            background: var(--bg);
+            line-height: 1.6;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 16px;
+            letter-spacing: -0.02em;
+        }
+
+        .hero p {
+            font-size: 1.125rem;
+            color: rgba(255, 255, 255, 0.7);
+            max-width: 600px;
+            margin: 0 auto 32px;
+        }
+
+        .hero .badges {
+            display: flex;
+            gap: 8px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 32px;
+        }
+
+        .hero .badges img { height: 28px; }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 28px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            font-size: 0.95rem;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(99, 102, 241, 0.3);
+        }
+
+        .btn-outline {
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            margin-left: 12px;
+        }
+
+        .btn-outline:hover {
+            border-color: white;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 80px 20px;
+        }
+
+        section h2 {
+            font-size: 1.875rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 12px;
+            color: var(--text);
+        }
+
+        section .subtitle {
+            text-align: center;
+            color: var(--text-muted);
+            margin-bottom: 48px;
+            font-size: 1.05rem;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+        }
+
+        .feature-card {
+            background: var(--bg-subtle);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 28px;
+            transition: all 0.2s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
+        }
+
+        .feature-card .icon {
+            font-size: 1.5rem;
+            margin-bottom: 12px;
+        }
+
+        .feature-card h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--text);
+        }
+
+        .feature-card p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .screenshots {
+            background: var(--bg-subtle);
+        }
+
+        .screenshot-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+            align-items: center;
+        }
+
+        .screenshot-grid img {
+            width: 100%;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+        }
+
+        .screenshot-label {
+            text-align: center;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: var(--text-secondary);
+        }
+
+        .colors-section {
+            text-align: center;
+        }
+
+        .color-grid {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .color-swatch {
+            width: 80px;
+            text-align: center;
+        }
+
+        .color-swatch .circle {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            margin: 0 auto 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s ease;
+        }
+
+        .color-swatch .circle:hover { transform: scale(1.15); }
+
+        .color-swatch span {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        .install {
+            background: var(--bg-subtle);
+        }
+
+        .install pre {
+            background: var(--navbar-bg);
+            color: #e2e8f0;
+            padding: 20px 24px;
+            border-radius: 10px;
+            overflow-x: auto;
+            font-size: 0.875rem;
+            line-height: 1.8;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .install code { font-family: 'Fira Code', 'Cascadia Code', monospace; }
+
+        footer {
+            background: var(--navbar-bg);
+            color: rgba(255, 255, 255, 0.6);
+            text-align: center;
+            padding: 32px 20px;
+            font-size: 0.875rem;
+        }
+
+        footer a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+        }
+
+        footer a:hover { color: white; }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 1.75rem; }
+            .screenshot-grid { grid-template-columns: 1fr; }
+            .btn-outline { margin-left: 0; margin-top: 12px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="hero">
+    <div class="container">
+        <div class="badges">
+            <img src="https://img.shields.io/badge/Odoo-17.0-714B67?style=flat-square&logo=odoo&logoColor=white" alt="Odoo 17">
+            <img src="https://img.shields.io/badge/License-LGPL--3-blue?style=flat-square" alt="LGPL-3">
+            <img src="https://img.shields.io/badge/CSS_Only-No_JS-brightgreen?style=flat-square" alt="CSS Only">
+            <img src="https://img.shields.io/badge/Dark_Mode-Supported-blueviolet?style=flat-square" alt="Dark Mode">
+        </div>
+        <h1>Modern Backend Theme</h1>
+        <p>A sleek, modern UI redesign for Odoo 17 Community Edition. Pure CSS &mdash; zero functional changes &mdash; fully reversible.</p>
+        <a href="https://github.com/JavierASU/custom_modern_theme_Odoo-17" class="btn btn-primary">View on GitHub</a>
+        <a href="https://github.com/JavierASU/custom_modern_theme_Odoo-17/releases" class="btn btn-outline">Download</a>
+    </div>
+</div>
+
+<section>
+    <div class="container">
+        <h2>Features</h2>
+        <p class="subtitle">40+ UI areas redesigned with modern aesthetics</p>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="icon">&#127912;</div>
+                <h3>Modern Color System</h3>
+                <p>Indigo primary with SCSS variables. Change every color from one place. 5 built-in presets available.</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">&#127769;</div>
+                <h3>Dark Mode</h3>
+                <p>Automatic dark mode via prefers-color-scheme. Respects your system preference with carefully tuned dark palette.</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">&#9889;</div>
+                <h3>Zero Impact</h3>
+                <p>Pure CSS/SCSS overrides only. No Python, no JavaScript, no functional changes. Uninstall to revert instantly.</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">&#9855;</div>
+                <h3>Accessible</h3>
+                <p>Focus-visible indicators, reduced-motion support, improved contrast ratios, and keyboard navigation.</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">&#128196;</div>
+                <h3>Print Ready</h3>
+                <p>Clean print styles that hide navigation and optimize form/list views for paper output.</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">&#128272;</div>
+                <h3>Login Page</h3>
+                <p>Styled login page matching the theme with gradient background and modern form inputs.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="screenshots">
+    <div class="container">
+        <h2>Before &amp; After</h2>
+        <p class="subtitle">See the difference with a single module install</p>
+        <div class="screenshot-grid">
+            <div>
+                <div class="screenshot-label">Before (Default Odoo 17)</div>
+                <img src="https://raw.githubusercontent.com/JavierASU/custom_modern_theme_Odoo-17/main/imagenes/before_original.png" alt="Odoo 17 Default">
+            </div>
+            <div>
+                <div class="screenshot-label">After (Modern Theme)</div>
+                <img src="https://raw.githubusercontent.com/JavierASU/custom_modern_theme_Odoo-17/main/imagenes/after_modern.png" alt="Modern Theme">
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="colors-section">
+    <div class="container">
+        <h2>Color Presets</h2>
+        <p class="subtitle">Choose a preset or create your own by editing SCSS variables</p>
+        <div class="color-grid">
+            <div class="color-swatch">
+                <div class="circle" style="background: #6366f1;"></div>
+                <span>Indigo</span>
+            </div>
+            <div class="color-swatch">
+                <div class="circle" style="background: #3b82f6;"></div>
+                <span>Ocean</span>
+            </div>
+            <div class="color-swatch">
+                <div class="circle" style="background: #10b981;"></div>
+                <span>Forest</span>
+            </div>
+            <div class="color-swatch">
+                <div class="circle" style="background: #f97316;"></div>
+                <span>Sunset</span>
+            </div>
+            <div class="color-swatch">
+                <div class="circle" style="background: #8b5cf6;"></div>
+                <span>Royal</span>
+            </div>
+            <div class="color-swatch">
+                <div class="circle" style="background: #ef4444;"></div>
+                <span>Ruby</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="install">
+    <div class="container">
+        <h2>Quick Install</h2>
+        <p class="subtitle">Up and running in under 2 minutes</p>
+        <pre><code># Clone into your Odoo addons directory
+cd /path/to/odoo/addons
+git clone https://github.com/JavierASU/custom_modern_theme_Odoo-17.git custom_modern_theme
+
+# Restart Odoo and install
+./odoo-bin -c odoo.conf -u custom_modern_theme
+
+# Or with Docker
+docker cp custom_modern_theme odoo_container:/mnt/extra-addons/
+docker restart odoo_container</code></pre>
+    </div>
+</section>
+
+<footer>
+    <div class="container">
+        <p>Made with &#10084;&#65039; by <a href="https://github.com/JavierASU">JavierASU</a> &middot; Licensed under <a href="https://www.gnu.org/licenses/lgpl-3.0.en.html">LGPL-3.0</a></p>
+        <p style="margin-top: 8px;">Transforming Odoo, one pixel at a time.</p>
+    </div>
+</footer>
+
+</body>
+</html>

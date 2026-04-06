@@ -2,9 +2,51 @@
 // Modern Backend Theme for Odoo 17 Community Edition
 // ==========================================================================
 // Pure CSS overrides - no functional changes, only visual improvements.
-// Uses hardcoded values only (no cross-file SCSS variable references).
 // Uninstall the module to revert everything.
 // ==========================================================================
+
+// --------------------------------------------------------------------------
+// SCSS VARIABLES — Change colors here, applies everywhere
+// --------------------------------------------------------------------------
+$cmt-primary:         #6366f1;
+$cmt-primary-hover:   #4f46e5;
+$cmt-primary-active:  #4338ca;
+$cmt-primary-light:   #ede9fe;
+$cmt-primary-border:  #c7d2fe;
+$cmt-primary-rgb:     99, 102, 241;
+
+$cmt-navbar-bg:       #1e293b;
+$cmt-navbar-dark:     #0f172a;
+$cmt-navbar-mid:      #334155;
+
+$cmt-text-primary:    #0f172a;
+$cmt-text-secondary:  #334155;
+$cmt-text-muted:      #64748b;
+$cmt-text-light:      #94a3b8;
+
+$cmt-bg-base:         #ffffff;
+$cmt-bg-subtle:       #f8fafc;
+$cmt-bg-muted:        #f1f5f9;
+
+$cmt-border:          #e2e8f0;
+$cmt-border-light:    #f1f5f9;
+$cmt-border-dark:     #cbd5e1;
+
+$cmt-success:         #10b981;
+$cmt-warning:         #f59e0b;
+$cmt-danger:          #ef4444;
+$cmt-star:            #f59e0b;
+
+$cmt-font-family:     'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+$cmt-radius-sm:       6px;
+$cmt-radius-md:       8px;
+$cmt-radius-lg:       10px;
+$cmt-radius-xl:       12px;
+$cmt-radius-2xl:      14px;
+$cmt-radius-pill:     20px;
+
+$cmt-transition:      all 0.2s ease;
+$cmt-transition-fast: all 0.15s ease;
 
 // --------------------------------------------------------------------------
 // Google Font (loaded inline to avoid @import url() issues)
@@ -1358,5 +1400,670 @@
     to {
         opacity: 1;
         transform: translateY(0);
+    }
+}
+
+// ==========================================================================
+// 41. LOGIN PAGE
+// ==========================================================================
+.oe_login_form {
+    font-family: $cmt-font-family;
+
+    .btn-primary {
+        background: $cmt-primary;
+        border-color: $cmt-primary;
+        border-radius: $cmt-radius-md;
+        font-weight: 600;
+        padding: 10px 24px;
+        transition: $cmt-transition;
+
+        &:hover {
+            background: $cmt-primary-hover;
+            border-color: $cmt-primary-hover;
+            box-shadow: 0 4px 12px rgba($cmt-primary-rgb, 0.35);
+            transform: translateY(-1px);
+        }
+    }
+
+    input.form-control {
+        border: 1.5px solid $cmt-border;
+        border-radius: $cmt-radius-md;
+        padding: 10px 14px;
+        font-family: $cmt-font-family;
+        transition: $cmt-transition;
+
+        &:focus {
+            border-color: $cmt-primary;
+            box-shadow: 0 0 0 3px rgba($cmt-primary-rgb, 0.12);
+        }
+    }
+
+    label {
+        font-weight: 500;
+        color: $cmt-text-secondary;
+        font-size: 0.875rem;
+    }
+}
+
+.oe_single_form_container {
+    .card {
+        border: 1px solid $cmt-border;
+        border-radius: $cmt-radius-xl;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+    }
+}
+
+// Login background
+body.oe_login {
+    background: linear-gradient(135deg, $cmt-navbar-dark 0%, $cmt-navbar-bg 50%, $cmt-navbar-mid 100%);
+
+    .oe_login_logo {
+        margin-bottom: 24px;
+    }
+}
+
+// ==========================================================================
+// 42. ACCESSIBILITY IMPROVEMENTS
+// ==========================================================================
+.o_web_client {
+    // Better focus-visible indicators for keyboard navigation
+    *:focus-visible {
+        outline: 2px solid $cmt-primary;
+        outline-offset: 2px;
+        border-radius: 4px;
+    }
+
+    // Remove focus ring for mouse users
+    *:focus:not(:focus-visible) {
+        outline: none;
+    }
+
+    // Skip to content link (screen readers)
+    .o_skip_to_content {
+        position: absolute;
+        top: -100%;
+        left: 0;
+        background: $cmt-primary;
+        color: #fff;
+        padding: 8px 16px;
+        z-index: 10000;
+        font-family: $cmt-font-family;
+        font-weight: 600;
+        border-radius: 0 0 $cmt-radius-md 0;
+
+        &:focus {
+            top: 0;
+        }
+    }
+
+    // Ensure minimum touch target size (44x44px) on interactive elements
+    .btn-sm {
+        min-height: 36px;
+        min-width: 36px;
+    }
+
+    // Improve contrast for disabled states
+    .btn:disabled,
+    .btn.disabled {
+        opacity: 0.55;
+    }
+
+    // Reduced motion preference
+    @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+            animation-duration: 0.01ms !important;
+            animation-iteration-count: 1 !important;
+            transition-duration: 0.01ms !important;
+            scroll-behavior: auto !important;
+        }
+
+        .o_kanban_record:hover {
+            transform: none;
+        }
+
+        .btn-primary:hover {
+            transform: none;
+        }
+    }
+}
+
+// ==========================================================================
+// 43. PRINT STYLES
+// ==========================================================================
+@media print {
+    .o_main_navbar,
+    .o_menu_systray,
+    .o_control_panel .o_cp_action_menus,
+    .o_FormRenderer_chatterContainer,
+    .o_search_panel,
+    .o_Chatter,
+    .breadcrumb,
+    .o_pager {
+        display: none !important;
+    }
+
+    .o_form_view {
+        background: #fff !important;
+
+        .o_form_sheet_bg {
+            background: #fff !important;
+
+            .o_form_sheet {
+                border: none !important;
+                box-shadow: none !important;
+                margin: 0 !important;
+                max-width: 100% !important;
+            }
+        }
+    }
+
+    .o_list_view {
+        thead th {
+            background: #fff !important;
+            color: #000 !important;
+            border-bottom: 2px solid #000 !important;
+        }
+
+        tbody td {
+            color: #000 !important;
+            border-bottom: 1px solid #ccc !important;
+        }
+    }
+
+    .btn {
+        box-shadow: none !important;
+    }
+
+    body {
+        font-size: 12pt;
+        color: #000;
+    }
+}
+
+// ==========================================================================
+// 44. DARK MODE
+// ==========================================================================
+@media (prefers-color-scheme: dark) {
+    // Dark mode CSS variables
+    $dark-bg-base:       #0f172a;
+    $dark-bg-surface:    #1e293b;
+    $dark-bg-elevated:   #334155;
+    $dark-bg-subtle:     #1a2332;
+    $dark-border:        #334155;
+    $dark-border-light:  #475569;
+    $dark-text-primary:  #f1f5f9;
+    $dark-text-secondary:#cbd5e1;
+    $dark-text-muted:    #94a3b8;
+
+    // Global
+    .o_web_client {
+        background: $dark-bg-base;
+        color: $dark-text-primary;
+    }
+
+    // Navbar
+    .o_main_navbar {
+        background: darken($dark-bg-base, 3%) !important;
+        border-bottom-color: $dark-border !important;
+
+        .dropdown-menu {
+            background: $dark-bg-surface;
+            border-color: $dark-border;
+
+            .dropdown-item {
+                color: $dark-text-secondary;
+
+                &:hover, &:focus {
+                    background: $dark-bg-elevated;
+                    color: $dark-text-primary;
+                }
+            }
+
+            .dropdown-divider {
+                border-color: $dark-border;
+            }
+        }
+    }
+
+    // Home menu
+    .o_home_menu {
+        background: linear-gradient(135deg, #020617 0%, $dark-bg-base 50%, $dark-bg-surface 100%) !important;
+    }
+
+    // Control panel
+    .o_control_panel {
+        background: $dark-bg-surface;
+        border-bottom-color: $dark-border;
+
+        .breadcrumb-item {
+            a { color: lighten($cmt-primary, 15%); }
+            &.active { color: $dark-text-primary; }
+            + .breadcrumb-item::before { color: $dark-text-muted; }
+        }
+
+        .o_searchview {
+            border-color: $dark-border !important;
+            background: $dark-bg-base !important;
+
+            &:focus-within {
+                border-color: $cmt-primary !important;
+                background: $dark-bg-subtle !important;
+            }
+
+            .o_searchview_input {
+                color: $dark-text-primary;
+
+                &::placeholder { color: $dark-text-muted; }
+            }
+        }
+
+        .o_pager {
+            color: $dark-text-muted;
+            .o_pager_value { color: $dark-text-secondary; }
+        }
+    }
+
+    // Buttons
+    .o_web_client {
+        .btn-secondary {
+            background: $dark-bg-elevated;
+            border-color: $dark-border;
+            color: $dark-text-secondary;
+
+            &:hover, &:focus {
+                background: lighten($dark-bg-elevated, 5%);
+                color: $dark-text-primary;
+            }
+        }
+
+        .btn-link {
+            color: lighten($cmt-primary, 15%);
+            &:hover { color: lighten($cmt-primary, 25%); }
+        }
+    }
+
+    // Form view
+    .o_form_view {
+        background: $dark-bg-base;
+
+        .o_form_sheet_bg {
+            background: $dark-bg-base !important;
+
+            .o_form_sheet {
+                background: $dark-bg-surface;
+                border-color: $dark-border;
+                box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+            }
+        }
+
+        .o_form_label {
+            color: $dark-text-muted;
+        }
+
+        .o_field_widget input.o_input,
+        .o_field_widget textarea.o_input,
+        .o_field_widget .o_input {
+            background: $dark-bg-base;
+            border-color: $dark-border;
+            color: $dark-text-primary;
+
+            &:focus {
+                border-color: $cmt-primary;
+                box-shadow: 0 0 0 3px rgba($cmt-primary-rgb, 0.2);
+            }
+
+            &::placeholder { color: $dark-text-muted; }
+        }
+
+        .o_field_widget select.o_input {
+            background: $dark-bg-base;
+            border-color: $dark-border;
+            color: $dark-text-primary;
+        }
+
+        .o_group .o_group_col .o_horizontal_separator {
+            color: $dark-text-primary;
+            border-bottom-color: $dark-border;
+        }
+
+        .o_notebook .nav-tabs {
+            border-bottom-color: $dark-border;
+
+            .nav-link {
+                color: $dark-text-muted;
+
+                &:hover {
+                    color: lighten($cmt-primary, 15%);
+                    border-bottom-color: lighten($cmt-primary-border, -20%);
+                }
+
+                &.active {
+                    color: lighten($cmt-primary, 10%);
+                    border-bottom-color: $cmt-primary;
+                }
+            }
+        }
+
+        .o_FormRenderer_chatterContainer {
+            border-left-color: $dark-border;
+            background: $dark-bg-base;
+        }
+
+        .oe_button_box .oe_stat_button {
+            background: $dark-bg-surface;
+            border-color: $dark-border;
+
+            &:hover {
+                background: $dark-bg-elevated;
+                border-color: $cmt-primary;
+            }
+
+            .o_stat_info .o_stat_value { color: $dark-text-primary; }
+            .o_stat_info .o_stat_text { color: $dark-text-muted; }
+        }
+    }
+
+    // List view
+    .o_list_view {
+        thead th {
+            background: $dark-bg-surface;
+            color: $dark-text-muted;
+            border-bottom-color: $dark-border !important;
+        }
+
+        tbody tr {
+            td {
+                color: $dark-text-secondary;
+                border-bottom-color: $dark-border;
+            }
+
+            &:hover td { background-color: $dark-bg-elevated; }
+            &.o_data_row.o_selected_row td { background-color: rgba($cmt-primary-rgb, 0.15); }
+        }
+
+        tfoot td {
+            background: $dark-bg-surface;
+            color: $dark-text-primary;
+            border-top-color: $dark-border;
+        }
+    }
+
+    // Kanban view
+    .o_kanban_view {
+        background: $dark-bg-base;
+
+        .o_kanban_group .o_kanban_header .o_column_title {
+            color: $dark-text-primary;
+        }
+
+        .o_kanban_record {
+            background: $dark-bg-surface;
+            border-color: $dark-border;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+
+            &:hover {
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            }
+
+            strong, .o_kanban_record_title { color: $dark-text-primary; }
+            .o_kanban_record_body { color: $dark-text-muted; }
+        }
+
+        .o_kanban_quick_create {
+            background: $dark-bg-surface;
+            border-color: $dark-border;
+
+            input {
+                background: $dark-bg-base;
+                border-color: $dark-border;
+                color: $dark-text-primary;
+            }
+        }
+    }
+
+    // Settings
+    .o_base_settings .o_settings_container .o_setting_box {
+        &:hover { background: $dark-bg-elevated; }
+
+        .o_setting_right_pane {
+            .o_form_label { color: $dark-text-primary; }
+            span.text-muted { color: $dark-text-muted !important; }
+        }
+    }
+
+    // Modals
+    .o_web_client .modal {
+        .modal-content {
+            background: $dark-bg-surface;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4);
+        }
+
+        .modal-header {
+            background: $dark-bg-elevated;
+            border-bottom-color: $dark-border;
+
+            .modal-title { color: $dark-text-primary; }
+        }
+
+        .modal-footer { border-top-color: $dark-border; }
+    }
+
+    // Notifications
+    .o_notification_manager .o_notification {
+        background: $dark-bg-surface !important;
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3) !important;
+        color: $dark-text-primary;
+    }
+
+    // Badges
+    .o_web_client {
+        .badge.text-bg-success { background: rgba(16, 185, 129, 0.15) !important; color: #6ee7b7 !important; }
+        .badge.text-bg-danger  { background: rgba(239, 68, 68, 0.15) !important; color: #fca5a5 !important; }
+        .badge.text-bg-warning { background: rgba(245, 158, 11, 0.15) !important; color: #fcd34d !important; }
+        .badge.text-bg-info    { background: rgba($cmt-primary-rgb, 0.15) !important; color: #a5b4fc !important; }
+    }
+
+    // Tooltips
+    .o_web_client .tooltip .tooltip-inner {
+        background: $dark-bg-elevated;
+        border: 1px solid $dark-border-light;
+    }
+
+    // Scrollbars
+    .o_web_client {
+        * { scrollbar-color: $dark-border-light transparent; }
+        *::-webkit-scrollbar-thumb {
+            background: $dark-border-light;
+            &:hover { background: $dark-text-muted; }
+        }
+    }
+
+    // Search panel
+    .o_search_panel {
+        background: $dark-bg-surface;
+        border-right-color: $dark-border;
+
+        .o_search_panel_section_header { color: $dark-text-muted; }
+
+        .o_search_panel_category_value,
+        .o_search_panel_filter_value {
+            color: $dark-text-secondary;
+            &:hover { background: $dark-bg-elevated; }
+            &.active, &.selected {
+                background: rgba($cmt-primary-rgb, 0.15);
+                color: lighten($cmt-primary, 15%);
+            }
+        }
+    }
+
+    // Discuss
+    .o_Discuss .o_DiscussSidebar {
+        background: $dark-bg-surface;
+        border-right-color: $dark-border;
+
+        .o_DiscussSidebarCategory_header { color: $dark-text-muted; }
+
+        .o_ThreadCard {
+            &:hover { background: $dark-bg-elevated; }
+            &.o-active {
+                background: rgba($cmt-primary-rgb, 0.15);
+                color: lighten($cmt-primary, 15%);
+            }
+        }
+    }
+
+    // Chatter
+    .o_Chatter {
+        .o_Message { border-bottom-color: $dark-border; }
+
+        .o_Composer {
+            background: $dark-bg-base;
+            border-color: $dark-border;
+
+            &:focus-within {
+                border-color: $cmt-primary;
+            }
+        }
+    }
+
+    // Autocomplete dropdowns
+    .o_web_client {
+        .o-autocomplete--dropdown-menu,
+        .ui-autocomplete {
+            background: $dark-bg-surface !important;
+            border-color: $dark-border !important;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3) !important;
+
+            .o-autocomplete--dropdown-item,
+            .ui-menu-item {
+                color: $dark-text-secondary;
+                &:hover, &.ui-state-active { background: $dark-bg-elevated; }
+            }
+        }
+    }
+
+    // Wizard/Dialog forms
+    .o_web_client .o_dialog .o_form_view {
+        background: $dark-bg-surface;
+
+        .o_form_sheet_bg {
+            background: $dark-bg-surface !important;
+        }
+    }
+
+    // Empty state
+    .o_web_client .o_view_nocontent .o_nocontent_help {
+        p:first-of-type { color: $dark-text-secondary; }
+        p:not(:first-of-type) { color: $dark-text-muted; }
+    }
+
+    // Tables
+    .o_web_client .table {
+        --bs-table-hover-bg: #{$dark-bg-elevated};
+        > :not(caption) > * > * { border-bottom-color: $dark-border; }
+    }
+
+    // Input groups
+    .o_web_client .input-group {
+        .input-group-text {
+            background: $dark-bg-elevated;
+            border-color: $dark-border;
+            color: $dark-text-muted;
+        }
+        .form-control {
+            background: $dark-bg-base;
+            border-color: $dark-border;
+            color: $dark-text-primary;
+        }
+    }
+
+    // Dashboard
+    .o_web_client .o_kanban_view.o_kanban_dashboard .o_kanban_record {
+        background: $dark-bg-surface;
+        border-color: $dark-border;
+
+        .o_primary { color: $dark-text-primary; }
+        .o_secondary { color: $dark-text-muted; }
+    }
+
+    // Selection highlight
+    .o_web_client ::selection {
+        background: rgba($cmt-primary-rgb, 0.3);
+        color: $dark-text-primary;
+    }
+
+    // Action menus dropdown
+    .o_web_client .o_cp_action_menus .dropdown-menu {
+        background: $dark-bg-surface;
+        border-color: $dark-border;
+
+        .dropdown-item {
+            color: $dark-text-secondary;
+            .fa, .oi { color: $dark-text-muted; }
+
+            &:hover {
+                background: $dark-bg-elevated;
+                .fa, .oi { color: $cmt-primary; }
+            }
+        }
+    }
+
+    // App switcher
+    .o_navbar_apps_menu .dropdown-menu {
+        background: $dark-bg-surface !important;
+
+        .o_app {
+            &:hover { background: $dark-bg-elevated; }
+            .o_app_name { color: $dark-text-secondary; }
+        }
+    }
+
+    // Activity view
+    .o_activity_view table thead th {
+        background: $dark-bg-surface;
+        color: $dark-text-muted;
+    }
+
+    // Calendar
+    .o_calendar_renderer .fc-event {
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+    }
+
+    // Pivot
+    .o_pivot thead th {
+        color: $dark-text-muted;
+        background: $dark-bg-surface;
+    }
+
+    // Progress bars
+    .o_web_client .progress {
+        background: $dark-border;
+    }
+
+    // Login page dark mode
+    body.oe_login {
+        background: linear-gradient(135deg, #020617 0%, $dark-bg-base 50%, $dark-bg-surface 100%);
+
+        .card {
+            background: $dark-bg-surface;
+            border-color: $dark-border;
+        }
+
+        .oe_login_form {
+            input.form-control {
+                background: $dark-bg-base;
+                border-color: $dark-border;
+                color: $dark-text-primary;
+            }
+
+            label { color: $dark-text-secondary; }
+        }
+    }
+
+    // Focus-visible in dark mode
+    .o_web_client *:focus-visible {
+        outline-color: lighten($cmt-primary, 15%);
     }
 }

@@ -13,12 +13,16 @@ Transforms the entire Odoo backend appearance:
 - Better control panel and breadcrumbs
 - Refined sidebar, modals, and notifications
 - Google Fonts (Inter) for clean typography
+- Dark mode (automatic via prefers-color-scheme)
+- Login page styling
+- Accessibility improvements (focus-visible, reduced motion)
+- Print-optimized styles
 
 Only changes CSS - zero functional changes. Uninstall to revert.
     """,
     'author': 'Custom Modern Theme Team',
     'category': 'Themes/Backend',
-    'version': '17.0.1.0.0',
+    'version': '17.0.1.1.0',
     'license': 'LGPL-3',
 
     'depends': ['web'],

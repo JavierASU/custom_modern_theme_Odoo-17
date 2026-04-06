@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Question / Discussion
+    url: https://github.com/JavierASU/custom_modern_theme_Odoo-17/discussions
+    about: Use discussions for questions and general help
