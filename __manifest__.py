@@ -40,6 +40,7 @@ Only changes CSS - zero functional changes. Uninstall to revert.
             '/custom_modern_theme/static/src/scss/backend_theme_scrollbar.scss',
             '/custom_modern_theme/static/src/scss/backend_theme_empty_states.scss',
             '/custom_modern_theme/static/src/scss/backend_theme_badges.scss',
+            '/custom_modern_theme/static/src/scss/backend_theme_breadcrumbs.scss',
         ],
     },
 
