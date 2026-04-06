@@ -1420,7 +1420,7 @@ $cmt-transition-fast: all 0.15s ease;
         &:hover {
             background: $cmt-primary-hover;
             border-color: $cmt-primary-hover;
-            box-shadow: 0 4px 12px rgba($cmt-primary, 0.35);
+            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.35);
             transform: translateY(-1px);
         }
     }
@@ -1434,7 +1434,7 @@ $cmt-transition-fast: all 0.15s ease;
 
         &:focus {
             border-color: $cmt-primary;
-            box-shadow: 0 0 0 3px rgba($cmt-primary, 0.12);
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.12);
         }
     }
 
@@ -1711,7 +1711,7 @@ body.oe_login {
 
             &:focus {
                 border-color: $cmt-primary;
-                box-shadow: 0 0 0 3px rgba($cmt-primary, 0.2);
+                box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
             }
 
             &::placeholder { color: $dark-text-muted; }
@@ -1780,7 +1780,7 @@ body.oe_login {
             }
 
             &:hover td { background-color: $dark-bg-elevated; }
-            &.o_data_row.o_selected_row td { background-color: rgba($cmt-primary, 0.15); }
+            &.o_data_row.o_selected_row td { background-color: rgba(99, 102, 241, 0.15); }
         }
 
         tfoot td {
@@ -1862,7 +1862,7 @@ body.oe_login {
         .badge.text-bg-success { background: rgba(16, 185, 129, 0.15) !important; color: #6ee7b7 !important; }
         .badge.text-bg-danger  { background: rgba(239, 68, 68, 0.15) !important; color: #fca5a5 !important; }
         .badge.text-bg-warning { background: rgba(245, 158, 11, 0.15) !important; color: #fcd34d !important; }
-        .badge.text-bg-info    { background: rgba($cmt-primary, 0.15) !important; color: #a5b4fc !important; }
+        .badge.text-bg-info    { background: rgba(99, 102, 241, 0.15) !important; color: #a5b4fc !important; }
     }
 
     // Tooltips
@@ -1892,7 +1892,7 @@ body.oe_login {
             color: $dark-text-secondary;
             &:hover { background: $dark-bg-elevated; }
             &.active, &.selected {
-                background: rgba($cmt-primary, 0.15);
+                background: rgba(99, 102, 241, 0.15);
                 color: #818cf8;
             }
         }
@@ -1908,7 +1908,7 @@ body.oe_login {
         .o_ThreadCard {
             &:hover { background: $dark-bg-elevated; }
             &.o-active {
-                background: rgba($cmt-primary, 0.15);
+                background: rgba(99, 102, 241, 0.15);
                 color: #818cf8;
             }
         }
@@ -1990,7 +1990,7 @@ body.oe_login {
 
     // Selection highlight
     .o_web_client ::selection {
-        background: rgba($cmt-primary, 0.3);
+        background: rgba(99, 102, 241, 0.3);
         color: $dark-text-primary;
     }
 
