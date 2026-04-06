@@ -1,0 +1,50 @@
+// ==========================================================================
+// RTL (Right-to-Left) Support for Modern Backend Theme
+// ==========================================================================
+// Provides basic RTL adjustments for Arabic, Hebrew, and other RTL languages.
+// This file is loaded alongside backend_theme.scss for RTL locales.
+// ==========================================================================
+
+[dir="rtl"] {
+
+    // Notifications: flip border side
+    .o_notification_manager .o_notification {
+        &.border-success { border-left: none !important; border-right: 4px solid #10b981 !important; }
+        &.border-warning { border-left: none !important; border-right: 4px solid #f59e0b !important; }
+        &.border-danger  { border-left: none !important; border-right: 4px solid #ef4444 !important; }
+        &.border-info    { border-left: none !important; border-right: 4px solid #6366f1 !important; }
+    }
+
+    // Chatter: flip border side
+    .o_form_view .o_FormRenderer_chatterContainer {
+        border-left: none;
+        border-right: 1px solid #f1f5f9;
+    }
+
+    // Search panel: flip border side
+    .o_search_panel {
+        border-right: none;
+        border-left: 1px solid #f1f5f9;
+    }
+
+    // Discuss sidebar: flip border
+    .o_Discuss .o_DiscussSidebar {
+        border-right: none;
+        border-left: 1px solid #f1f5f9;
+    }
+
+    // Dropdown animation: flip direction
+    .o_main_navbar .dropdown-menu {
+        animation: cmtFadeInDown 0.15s ease-out;
+    }
+
+    // Breadcrumbs: flip separator
+    .o_control_panel .breadcrumb .breadcrumb-item + .breadcrumb-item::before {
+        content: "\\";
+    }
+
+    // Stat button icons
+    .o_form_view .oe_button_box .oe_stat_button .o_stat_info {
+        text-align: right;
+    }
+}
