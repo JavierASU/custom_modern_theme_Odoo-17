@@ -1,0 +1,129 @@
+// ==========================================================================
+// Responsive Improvements for Modern Backend Theme
+// ==========================================================================
+// Enhanced mobile and tablet experience for Odoo 17 backend.
+// ==========================================================================
+
+// --------------------------------------------------------------------------
+// Tablet (max-width: 1024px)
+// --------------------------------------------------------------------------
+@media (max-width: 1024px) {
+    .o_form_view .o_form_sheet_bg .o_form_sheet {
+        margin: 8px;
+        border-radius: 8px;
+    }
+
+    .o_kanban_view .o_kanban_record {
+        border-radius: 8px;
+    }
+
+    .o_control_panel {
+        padding: 6px 12px;
+    }
+}
+
+// --------------------------------------------------------------------------
+// Mobile (max-width: 767px)
+// --------------------------------------------------------------------------
+@media (max-width: 767px) {
+    // Navbar adjustments
+    .o_main_navbar {
+        .o_menu_brand {
+            font-size: 0.875rem;
+        }
+
+        .o_menu_sections .o_nav_entry,
+        .o_menu_sections .dropdown-toggle {
+            font-size: 0.813rem;
+            padding: 6px 8px;
+        }
+    }
+
+    // Form view mobile
+    .o_form_view {
+        .o_form_sheet_bg .o_form_sheet {
+            margin: 4px;
+            border-radius: 6px;
+            padding: 12px;
+        }
+
+        .o_form_label {
+            font-size: 0.75rem;
+        }
+
+        .o_field_widget input.o_input,
+        .o_field_widget textarea.o_input {
+            font-size: 16px; // Prevents iOS zoom on focus
+        }
+    }
+
+    // Control panel mobile
+    .o_control_panel {
+        padding: 4px 8px;
+
+        .o_searchview {
+            border-radius: 8px !important;
+        }
+
+        .breadcrumb .breadcrumb-item {
+            font-size: 0.75rem;
+        }
+    }
+
+    // Kanban mobile
+    .o_kanban_view .o_kanban_record {
+        border-radius: 6px;
+        margin-bottom: 6px;
+    }
+
+    // Modals mobile - full width
+    .o_web_client .modal .modal-content {
+        border-radius: 10px;
+        margin: 8px;
+    }
+
+    // Buttons mobile - larger touch targets
+    .o_web_client .btn {
+        min-height: 40px;
+        padding: 8px 16px;
+    }
+
+    // Dashboard cards mobile
+    .o_web_client .o_kanban_view.o_kanban_dashboard .o_kanban_record {
+        border-radius: 8px;
+    }
+
+    // Stat buttons stacking
+    .o_form_view .oe_button_box {
+        .oe_stat_button {
+            border-radius: 6px;
+            min-height: 44px;
+        }
+    }
+}
+
+// --------------------------------------------------------------------------
+// Small Mobile (max-width: 480px)
+// --------------------------------------------------------------------------
+@media (max-width: 480px) {
+    .o_form_view .o_form_sheet_bg .o_form_sheet {
+        margin: 2px;
+        padding: 8px;
+    }
+
+    .o_control_panel .o_searchview {
+        font-size: 0.813rem;
+    }
+
+    .o_list_view {
+        thead th {
+            font-size: 0.688rem;
+            padding: 6px 4px;
+        }
+
+        tbody td {
+            font-size: 0.813rem;
+            padding: 8px 4px;
+        }
+    }
+}
