@@ -99,6 +99,29 @@
 }
 
 // --------------------------------------------------------------------------
+// Badge transitions and interactions
+// --------------------------------------------------------------------------
+.o_web_client .badge {
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+
+    &:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .o_web_client .badge,
+    .o_field_status .o_status {
+        transition: none !important;
+
+        &:hover {
+            transform: none !important;
+        }
+    }
+}
+
+// --------------------------------------------------------------------------
 // Activity badges (due dates)
 // --------------------------------------------------------------------------
 .o_web_client {
