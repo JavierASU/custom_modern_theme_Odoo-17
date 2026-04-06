@@ -1,0 +1,119 @@
+// ==========================================================================
+// Enhanced Empty State Styles for Modern Backend Theme
+// ==========================================================================
+// Better "no records" and empty state visuals.
+// ==========================================================================
+
+// --------------------------------------------------------------------------
+// No content / empty list
+// --------------------------------------------------------------------------
+.o_web_client .o_view_nocontent {
+    padding: 60px 20px;
+
+    .o_nocontent_help {
+        max-width: 420px;
+        margin: 0 auto;
+        text-align: center;
+
+        // Smiling face icon
+        p.o_view_nocontent_smiling_face {
+            margin-bottom: 20px;
+
+            &::before {
+                font-size: 3rem;
+                color: #c7d2fe;
+                display: block;
+                margin-bottom: 16px;
+                opacity: 0.8;
+            }
+        }
+
+        // Title
+        p:first-of-type {
+            font-family: 'Inter', system-ui, sans-serif;
+            font-weight: 700;
+            font-size: 1.25rem;
+            color: #1e293b;
+            margin-bottom: 8px;
+            letter-spacing: -0.02em;
+        }
+
+        // Description
+        p:not(:first-of-type) {
+            color: #64748b;
+            font-size: 0.875rem;
+            line-height: 1.6;
+            margin-bottom: 4px;
+        }
+
+        // CTA button
+        .btn-primary {
+            margin-top: 20px;
+            padding: 10px 24px;
+            font-weight: 600;
+        }
+    }
+}
+
+// --------------------------------------------------------------------------
+// Empty kanban column
+// --------------------------------------------------------------------------
+.o_kanban_view .o_kanban_group.o_kanban_no_records {
+    .o_kanban_no_content {
+        padding: 40px 20px;
+        text-align: center;
+        color: #94a3b8;
+        font-style: italic;
+        font-size: 0.875rem;
+    }
+}
+
+// --------------------------------------------------------------------------
+// Empty chatter
+// --------------------------------------------------------------------------
+.o_Chatter .o_Chatter_noMessage {
+    padding: 40px 20px;
+    text-align: center;
+    color: #94a3b8;
+    font-size: 0.875rem;
+    font-family: 'Inter', system-ui, sans-serif;
+}
+
+// --------------------------------------------------------------------------
+// Search no results
+// --------------------------------------------------------------------------
+.o_web_client .o_searchview_input_container {
+    .o_searchview_input {
+        &::placeholder {
+            color: #94a3b8;
+            font-style: normal;
+        }
+    }
+}
+
+// --------------------------------------------------------------------------
+// Dark mode
+// --------------------------------------------------------------------------
+@media (prefers-color-scheme: dark) {
+    .o_web_client .o_view_nocontent .o_nocontent_help {
+        p.o_view_nocontent_smiling_face::before {
+            color: #475569;
+        }
+
+        p:first-of-type {
+            color: #e2e8f0;
+        }
+
+        p:not(:first-of-type) {
+            color: #94a3b8;
+        }
+    }
+
+    .o_kanban_view .o_kanban_group.o_kanban_no_records .o_kanban_no_content {
+        color: #64748b;
+    }
+
+    .o_Chatter .o_Chatter_noMessage {
+        color: #64748b;
+    }
+}
