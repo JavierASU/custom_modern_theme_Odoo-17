@@ -1,0 +1,139 @@
+// ==========================================================================
+// Enhanced Tooltips & Popovers for Modern Backend Theme
+// ==========================================================================
+// Modern tooltip and popover styling with smooth animations.
+// ==========================================================================
+
+// --------------------------------------------------------------------------
+// Tooltips
+// --------------------------------------------------------------------------
+.o_web_client .tooltip {
+    font-family: 'Inter', system-ui, sans-serif;
+
+    .tooltip-inner {
+        background: #0f172a;
+        color: #f1f5f9;
+        border-radius: 8px;
+        padding: 8px 14px;
+        font-size: 0.75rem;
+        font-weight: 500;
+        line-height: 1.5;
+        max-width: 280px;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+        letter-spacing: -0.01em;
+    }
+
+    .tooltip-arrow::before {
+        border-top-color: #0f172a;
+    }
+
+    &.bs-tooltip-bottom .tooltip-arrow::before {
+        border-bottom-color: #0f172a;
+    }
+
+    &.bs-tooltip-start .tooltip-arrow::before {
+        border-left-color: #0f172a;
+    }
+
+    &.bs-tooltip-end .tooltip-arrow::before {
+        border-right-color: #0f172a;
+    }
+
+    // Smooth entrance
+    &.show {
+        animation: cmtTooltipIn 0.15s ease-out;
+    }
+}
+
+@keyframes cmtTooltipIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+// --------------------------------------------------------------------------
+// Popovers
+// --------------------------------------------------------------------------
+.o_web_client .popover {
+    font-family: 'Inter', system-ui, sans-serif;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+
+    .popover-header {
+        background: #f8fafc;
+        border-bottom: 1px solid #f1f5f9;
+        font-weight: 600;
+        font-size: 0.875rem;
+        color: #0f172a;
+        padding: 12px 16px;
+    }
+
+    .popover-body {
+        padding: 12px 16px;
+        font-size: 0.813rem;
+        color: #334155;
+        line-height: 1.6;
+    }
+
+    .popover-arrow::before {
+        border-color: #e2e8f0;
+    }
+
+    .popover-arrow::after {
+        border-color: #ffffff;
+    }
+}
+
+// --------------------------------------------------------------------------
+// Dark mode
+// --------------------------------------------------------------------------
+@media (prefers-color-scheme: dark) {
+    .o_web_client .tooltip .tooltip-inner {
+        background: #334155;
+        color: #f1f5f9;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+        border: 1px solid #475569;
+    }
+
+    .o_web_client .tooltip {
+        .tooltip-arrow::before { border-top-color: #334155; }
+        &.bs-tooltip-bottom .tooltip-arrow::before { border-bottom-color: #334155; }
+        &.bs-tooltip-start .tooltip-arrow::before { border-left-color: #334155; }
+        &.bs-tooltip-end .tooltip-arrow::before { border-right-color: #334155; }
+    }
+
+    .o_web_client .popover {
+        background: #1e293b;
+        border-color: #334155;
+        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+
+        .popover-header {
+            background: #334155;
+            border-bottom-color: #475569;
+            color: #f1f5f9;
+        }
+
+        .popover-body {
+            color: #cbd5e1;
+        }
+
+        .popover-arrow::before { border-color: #334155; }
+        .popover-arrow::after { border-color: #1e293b; }
+    }
+}
+
+// --------------------------------------------------------------------------
+// Reduced motion
+// --------------------------------------------------------------------------
+@media (prefers-reduced-motion: reduce) {
+    .o_web_client .tooltip.show {
+        animation: none;
+    }
+}
