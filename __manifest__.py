@@ -32,6 +32,7 @@ Only changes CSS - zero functional changes. Uninstall to revert.
     'assets': {
         'web.assets_backend': [
             '/custom_modern_theme/static/src/scss/backend_theme.scss',
+            '/custom_modern_theme/static/src/scss/backend_theme_rtl.scss',
         ],
     },
 

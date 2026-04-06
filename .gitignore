@@ -1,16 +1,49 @@
+# Python
 __pycache__/
-*.pyc
-*.pyo
+*.py[cod]
+*$py.class
+*.so
 *.egg-info/
 dist/
 build/
 .eggs/
 *.egg
+
+# Odoo
+filestore/
+sessions/
+*.log
+
+# SCSS compiled output
+static/src/scss/*.css
+static/src/scss/*.css.map
+
+# IDE
 .vscode/
 .idea/
+*.sublime-project
+*.sublime-workspace
+
+# Editors
 *.swp
 *.swo
 *~
+*.bak
+
+# OS
 .DS_Store
 Thumbs.db
+Desktop.ini
+ehthumbs.db
+
+# Node (if using build tools)
 node_modules/
+package-lock.json
+
+# Environment
+.env
+.env.local
+*.env
+
+# Claude Code
+.claude/
