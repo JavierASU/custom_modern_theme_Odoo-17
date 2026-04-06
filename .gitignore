@@ -47,3 +47,15 @@ package-lock.json
 
 # Claude Code
 .claude/
+
+# Testing & Coverage
+htmlcov/
+.coverage
+.coverage.*
+.pytest_cache/
+.tox/
+
+# Distribution & Packaging
+*.whl
+*.tar.gz
+MANIFEST
